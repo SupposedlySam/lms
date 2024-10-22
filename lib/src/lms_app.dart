@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lms/src/sample_feature/sample_item.dart';
+import 'package:lms/src/courses/figma_on_flutter_course_details_view.dart';
 
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -70,14 +68,9 @@ class LMSApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName: // '/settings'
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName: // '/sample_item'
-                    final itemId =
-                        (routeSettings.arguments as Map)['id'] as int;
-
-                    return SampleItemDetailsView(item: SampleItem(itemId));
-                  case SampleItemListView.routeName: // '/'
+                  case FigmaOnFlutterCourseDetailsView.routeName:
                   default:
-                    return const SampleItemListView();
+                    return const FigmaOnFlutterCourseDetailsView();
                 }
               },
             );
