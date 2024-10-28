@@ -70,7 +70,7 @@ class LMSApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case FigmaOnFlutterCourseDetailsView.routeName:
                   default:
-                    return const FigmaOnFlutterCourseDetailsView();
+                    return FigmaOnFlutterCourseDetailsView();
                 }
               },
             );

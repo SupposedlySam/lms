@@ -4,8 +4,6 @@ import 'package:lms/core/extensions.dart';
 enum SectionType { text, unorderedBullets }
 
 class Section extends StatelessWidget {
-  static const String unorderedListItem = "\u2022 ";
-
   const Section({
     required this.title,
     required this.content,
@@ -19,26 +17,19 @@ class Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title, style: context.textTheme.headlineLarge),
-        ...switch (type) {
-          SectionType.text => _toParagraphs(),
-          SectionType.unorderedBullets => _toUnorderedBullets(),
-          _ => _toParagraphs(),
-        }
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: context.textTheme.headlineLarge),
+          ...switch (type) {
+            SectionType.text => content.toParagraphs(24),
+            SectionType.unorderedBullets => content.toUnorderedBullets(4),
+            _ => content.toParagraphs(24),
+          }
+        ],
+      ),
     );
-  }
-
-  Iterable<Widget> _toParagraphs() {
-    return content
-        .expand((paragraph) => [Text(paragraph), SizedBox(height: 24)]);
-  }
-
-  Iterable<Widget> _toUnorderedBullets() {
-    return content.expand(
-        (text) => [Text('$unorderedListItem $text'), SizedBox(height: 4)]);
   }
 }
