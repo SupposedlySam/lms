@@ -1,259 +1,20 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lms/core/extensions.dart';
 import 'package:lms/src/components/section.dart';
 import 'package:lms/src/components/social_testimonial_card.dart';
 import 'package:lms/src/components/video.dart';
+import 'package:lms/src/components/video_card.dart';
 import 'package:lms/src/components/video_sources.dart';
+import 'package:lms/src/data/mock_chapters.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-class Chapter extends Equatable {
-  const Chapter({
-    required this.title,
-    required this.description,
-    required this.videoUri,
-  });
-
-  final String title;
-  final String description;
-  final Uri videoUri;
-
-  @override
-  List<Object> get props => [title, description, videoUri];
-}
 
 class FigmaOnFlutterCourseDetailsView extends StatelessWidget {
   FigmaOnFlutterCourseDetailsView({super.key});
 
   static const routeName = '/course/figma-on-flutter';
 
-  final chapters = <Chapter>[
-    // 🚀 Getting Started
-    Chapter(
-      title: 'Flutter Explained in 100 Seconds',
-      description: 'Quick overview of Flutter framework',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Resources',
-      description: 'Essential learning resources',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Installation and Setup',
-      description: 'Setup your development environment',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Flutter Create',
-      description: 'Create your first Flutter project',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Editor Tricks',
-      description: 'Essential IDE tips and tricks',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Dev Tools',
-      description: 'Master Flutter development tools',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // 🐣 Basic Training
-    Chapter(
-      title: 'Flutter Basics Tutorial',
-      description: 'Learn fundamental Flutter concepts',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Async Widgets',
-      description: 'Handle asynchronous operations',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Provider',
-      description: 'State management fundamentals',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // 🎫 App Development
-    Chapter(
-      title: 'App Tour',
-      description: 'Overview of the quiz application',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Firebase Setup',
-      description: 'Configure Firebase for Flutter',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Project Organization',
-      description: 'Structure your Flutter project',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Routing',
-      description: 'Navigate between screens',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Themes',
-      description: 'Style your app with themes',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Google Fonts',
-      description: 'Implement custom typography',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Bottom Navigation Bar',
-      description: 'Create app navigation',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // 🌊 Authentication
-    Chapter(
-      title: 'Auth Stream',
-      description: 'Handle user authentication state',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Login Screen',
-      description: 'Build the authentication UI',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Google Sign In',
-      description: 'Implement Google authentication',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Sign in with Apple',
-      description: 'Implement Apple authentication',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // 💽 Firestore Integration
-    Chapter(
-      title: 'Database Model',
-      description: 'Design the data structure',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'JSON Serializable',
-      description: 'Convert Firestore data to Dart',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Basic Data Fetching',
-      description: 'Read from Firestore',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Relational Data Fetching',
-      description: 'Handle complex data relationships',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Write to Firestore',
-      description: 'Update and create data',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // 📳 Core UI Components
-    Chapter(
-      title: 'Topics Grid',
-      description: 'Build the quiz topics grid',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Hero Animation',
-      description: 'Add smooth transitions',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Stream Provider',
-      description: 'Manage realtime data streams',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Dynamic Drawer',
-      description: 'Create an animated drawer',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'User Profile',
-      description: 'Display user information',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Animated Progress Bar',
-      description: 'Add interactive animations',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // ✨ Quiz Features
-    Chapter(
-      title: 'State Management with Provider',
-      description: 'Manage quiz state',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Dynamic Screens',
-      description: 'Create adaptive layouts',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Bottom Sheet',
-      description: 'Implement quiz interactions',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    // 🚀 Deployment
-    Chapter(
-      title: 'Google Play Release',
-      description: 'Deploy to Android',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-    Chapter(
-      title: 'Apple App Store Release',
-      description: 'Deploy to iOS',
-      videoUri: Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
-    ),
-  ];
+  final chapters = mockChapters;
 
   @override
   Widget build(BuildContext context) {
@@ -355,72 +116,50 @@ class FigmaOnFlutterCourseDetailsView extends StatelessWidget {
                 ),
                 _howToEnroll(context),
                 const SizedBox(height: 32),
-                Flexible(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Chapters', style: context.textTheme.headlineMedium),
-                      const SizedBox(height: 16),
-                      const Divider(),
-                      const SizedBox(height: 16),
-                      Flexible(
-                        child: Builder(builder: (context) {
-                          return LayoutBuilder(builder: (context, constraints) {
-                            return GridView.builder(
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: context.sizeOf.width < 800
-                                    ? 1
-                                    : context.sizeOf.width < 1200
-                                        ? 2
-                                        : context.sizeOf.width < 1400
-                                            ? 3
-                                            : 4,
-                                crossAxisSpacing: 16,
-                                mainAxisSpacing: 16,
-                                childAspectRatio: 3 / 2,
-                              ),
-                              itemCount: 36,
-                              itemBuilder: (context, index) {
-                                final chapter = chapters[index];
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Course Videos',
+                        style: context.textTheme.headlineMedium),
+                    const SizedBox(height: 16),
+                    const Divider(),
+                    const SizedBox(height: 16),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final crossAxisCount = context.sizeOf.width < 600
+                            ? 1
+                            : context.sizeOf.width < 900
+                                ? 2
+                                : context.sizeOf.width < 1200
+                                    ? 3
+                                    : 4;
 
-                                return Material(
-                                  color: context.theme.colorScheme.surface,
-                                  borderRadius: BorderRadius.circular(16),
-                                  elevation: 4,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(24.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${index + 1} ${chapter.title}',
-                                          textAlign: TextAlign.center,
-                                          style: context.textTheme.titleMedium,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        Text(
-                                          chapter.description,
-                                          textAlign: TextAlign.center,
-                                          style: context.textTheme.bodySmall,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: crossAxisCount,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                            childAspectRatio:
+                                0.65, // Increased height to prevent overflow
+                          ),
+                          itemCount: chapters.length,
+                          itemBuilder: (context, index) {
+                            final chapter = chapters[index];
+                            return VideoCard(
+                              chapter: chapter,
+                              onTap: () {
+                                // TODO: Navigate to video detail page
+                                debugPrint('Tapped on: ${chapter.title}');
                               },
                             );
-                          });
-                        }),
-                      ),
-                    ],
-                  ),
+                          },
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 32),
                 ...footer,
