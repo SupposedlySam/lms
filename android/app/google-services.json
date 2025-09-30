@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698709584913",
+    "project_id": "coursify-lms",
+    "storage_bucket": "coursify-lms.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698709584913:android:0afaffa21f68701f9515b0",
+        "android_client_info": {
+          "package_name": "com.supposedlysam.lms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALZJV1V1jI3Ll3i3Eb_sYZOB5NOnA-6mo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

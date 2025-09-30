@@ -10,28 +10,36 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
-  # firebase_analytics: ^11.3.3
-  # firebase_cloud_firestore: ^5.4.4
-  # firebase_core: ^3.6.0
-  equatable: ^2.0.5
+  # Firebase & Firefuel
+  firebase_core: ^4.1.1
+  firebase_auth: ^6.1.0
+  cloud_firestore: ^6.0.2
+  firefuel: ^0.4.5 
+  
+  # UI & State Management
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
-  flutter_animate: ^4.5.0
-  flutter_bloc: ^8.1.6
+  flutter_animate: ^4.5.2
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  flutter_svg: ^2.0.10+1
-  font_awesome_flutter: ^10.7.0
+  flutter_svg: ^2.2.1
+  font_awesome_flutter: ^10.10.0
+  
+  # Video Player
   video_player: ^2.10.0
   chewie: ^1.13.0
-  url_launcher: ^6.3.1
+  
+  # Other
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  freezed: ^2.5.7
+  freezed: ^3.2.3
 
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
