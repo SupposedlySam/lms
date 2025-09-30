@@ -5,6 +5,7 @@ import 'package:lms/core/extensions.dart';
 import 'package:lms/src/components/section.dart';
 import 'package:lms/src/components/social_testimonial_card.dart';
 import 'package:lms/src/components/video.dart';
+import 'package:lms/src/components/video_sources.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Chapter extends Equatable {
@@ -276,8 +277,9 @@ class FigmaOnFlutterCourseDetailsView extends StatelessWidget {
                 ),
                 Video(
                   key: ValueKey('figma-on-flutter-intro-video'),
-                  uri: Uri.parse(
-                      'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
+                  // Temporarily using test video that works on all platforms
+                  // Switch back to VideoSources.figmaOnFlutterIntro when you have MP4 URLs
+                  uri: VideoSources.testVideo,
                 ),
                 Section(
                   key: ValueKey('what-will-i-build'),
@@ -287,7 +289,6 @@ class FigmaOnFlutterCourseDetailsView extends StatelessWidget {
                     'A quiz was chosen because it provides a moderate amount of complexity with plenty of variety between learning concepts. My mission is to teach non-trivial concepts without getting bogged down into repetitive or boring tasks.'
                   ],
                 ),
-                // create a sectino for what will I learn
                 Section(
                   key: ValueKey('what-will-i-learn'),
                   type: SectionType.unorderedBullets,
@@ -401,11 +402,13 @@ class FigmaOnFlutterCourseDetailsView extends StatelessWidget {
                                           '${index + 1} ${chapter.title}',
                                           textAlign: TextAlign.center,
                                           style: context.textTheme.titleMedium,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         Text(
                                           chapter.description,
                                           textAlign: TextAlign.center,
                                           style: context.textTheme.bodySmall,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ],
                                     ),

@@ -7,7 +7,7 @@
         {
             "name": "lms",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
         },
         {
             "name": "lms (profile mode)",
